@@ -39,8 +39,8 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const request = require("request");
  
 mailchimp.setConfig({
-    apiKey: "125b1794fd6685e1d964182f4a8eda96-us12",
-    server: "us12"
+    apiKey: process.env.apiKey,
+    server: process.env.server
 })
  
 const app = express();
@@ -56,7 +56,7 @@ app.post("/", function(req,res){
     let lastName = req.body.last;
     let email = req.body.email;
  
-    const listId = "89e0e2e034";
+    const listId = process.env.listId;
     const subscribeData = {
         members: [
             {
